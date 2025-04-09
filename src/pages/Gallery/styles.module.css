@@ -1,0 +1,52 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem;
+
+  li {
+    position: relative;
+    padding: 1rem;
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    border: .1rem solid black;
+    cursor: pointer;
+  }
+
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.selectPhoto {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.74);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  margin: 5rem;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  background: black;
+  cursor: pointer;
+}
