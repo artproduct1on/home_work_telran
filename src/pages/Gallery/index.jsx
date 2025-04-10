@@ -1,28 +1,31 @@
+import { useState, useEffect } from 'react'
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
 import s from './styles.module.css'
 
 function Gallery() {
-
   const [photos, setPhotos] = useState(null);
   const [selectPhoto, setSelectPhoto] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios.get('https://fakestoreapi.com/products')
       .then(({ data }) => {
         setPhotos(data);
       })
-      .catch(err => console.log(err));
+      .catch(err => setError(err));
   }, []);
 
   function imgHeandler(num) {
     setSelectPhoto(photos[num])
   };
 
-  if (!photos) return (
-    <h1>(╯°□°) To be or not to be - that is the question</h1>
+  if (error) return (
+    <h1>(╯°□°) Something went wrong!</h1>
   );
 
+  if (!photos) return (
+    <h1>(O_o) To be or not to be - that is the question</h1>
+  );
 
   return <>
 
@@ -45,7 +48,6 @@ function Gallery() {
         />
       </div>
     }
-
   </>
 };
 

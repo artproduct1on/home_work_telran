@@ -3,10 +3,8 @@ import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
-
   const Contacts = lazy(() => import('./pages/Contacts'));
   const Gallery = lazy(() => import('./pages/Gallery'));
-
 
   return <>
     <Header />

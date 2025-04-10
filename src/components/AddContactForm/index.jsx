@@ -1,13 +1,11 @@
-import React, { useActionState } from 'react'
+import { useActionState } from 'react'
 import s from './styles.module.css'
 
 function AddContactForm({ setContacts }) {
-
   const [, formAction, isPending] = useActionState((p, formData) => {
     const data = { id: Date.now(), ...Object.fromEntries(formData) };
     setContacts(prev => [...prev, data]);
   }, null);
-
 
   return (
     <form action={formAction} className={s.form} disabled={isPending}>
@@ -34,7 +32,7 @@ function AddContactForm({ setContacts }) {
       />
       <button type='submit' disabled={isPending}>Add new Contact</button>
     </form>
-  )
+  );
 };
 
 export default AddContactForm;
