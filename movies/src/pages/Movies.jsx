@@ -1,5 +1,5 @@
-import { Fragment } from 'react'
-import { NavLink } from 'react-router-dom';
+import { Fragment, useEffect } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Container from '@mui/material/Container'
@@ -14,6 +14,14 @@ import CardMovies from '../components/CardMovies';
 function Movies() {
   const { genre } = useParams();
   const { dataMovies, loading, error } = useSelector((state) => state.movies);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (genre && !dataMovies?.genreList.includes(genre)) {
+      navigate('/notfound', { replace: true });
+    }
+  }, [genre, dataMovies?.genreList, navigate]);
+
 
   if (loading) return <Spinner />;
 
@@ -60,4 +68,4 @@ function Movies() {
   )
 }
 
-export default Movies
+export default Movies;
