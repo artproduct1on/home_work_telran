@@ -29,7 +29,7 @@ function Movies() {
 
   return (
     <Container>
-      <TabsMovies tabs={dataMovies?.genreList} />
+      <TabsMovies tabs={dataMovies?.genreList} genre={genre} />
       <Fab
         to="/add"
         component={NavLink}

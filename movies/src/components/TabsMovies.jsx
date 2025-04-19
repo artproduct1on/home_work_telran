@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-function TabsMovies({ tabs }) {
+function TabsMovies({ tabs, genre }) {
 
   return (
     <Box
@@ -21,16 +21,14 @@ function TabsMovies({ tabs }) {
       }}
     >
       <Button
-        to={`/`}
-        component={NavLink}
+        to={`/movies`}
+        component={Link}
         sx={{
           width: '100%',
           minWidth: 100,
           whiteSpace: 'nowrap',
-          "&.active": {
-            backgroundColor: 'primary.main',
-            color: 'primary.contrastText'
-          }
+          backgroundColor: !genre ? 'primary.main' : '',
+          color: !genre ? 'primary.contrastText' : '',
         }}
       >
         All
@@ -41,15 +39,13 @@ function TabsMovies({ tabs }) {
         <Button
           key={tab}
           to={`/movies/${tab}`}
-          component={NavLink}
+          component={Link}
           sx={{
             width: '100%',
             minWidth: 100,
             whiteSpace: 'nowrap',
-            "&.active": {
-              backgroundColor: 'primary.main',
-              color: 'primary.contrastText'
-            }
+            backgroundColor: genre === tab ? 'primary.main' : '',
+            color: genre === tab ? 'primary.contrastText' : '',
           }}
         >
           {tab}
